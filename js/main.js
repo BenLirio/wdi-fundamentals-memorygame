@@ -32,11 +32,6 @@ for(var i = 0; i < cards.length; i++) {
 	document.getElementById("game-board").appendChild(newCardElement);
 }
 
-
-
-
-
-
 function flipCard() {
 	cardsInPlay.push(cards[this.getAttribute('data-id')].rank);
 	this.setAttribute('src',cards[this.getAttribute('data-id')].cardImage);
