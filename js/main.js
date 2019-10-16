@@ -24,14 +24,25 @@ cards = [
 ];
 cardsInPlay = [];
 
+for(var i = 0; i < cards.length; i++) {
+	var newCardElement = document.createElement("img");
+	newCardElement.setAttribute('src',"images/back.png");
+	newCardElement.setAttribute('data-id', i);
+	newCardElement.addEventListener('click', flipCard);
+	document.getElementById("game-board").appendChild(newCardElement);
+}
 
 
 
-function flipCard(cardId) {
-	cardsInPlay.push(cards[cardId].rank);
-	console.log("User flipped: " + cards[cardId].rank);
-	console.log("User flipped: " + cards[cardId].suit);
-	console.log("User flipped: " + cards[cardId].cardImage);
+
+
+
+function flipCard() {
+	cardsInPlay.push(cards[this.getAttribute('data-id')].rank);
+	this.setAttribute('src',cards[this.getAttribute('data-id')].cardImage);
+	console.log("User flipped: " + cards[this.getAttribute('data-id')].rank);
+	console.log("User flipped: " + cards[this.getAttribute('data-id')].suit);
+	console.log("User flipped: " + cards[this.getAttribute('data-id')].cardImage);
 	checkForMatch();
 }
 function checkForMatch() {
@@ -44,5 +55,3 @@ function checkForMatch() {
 	}
 	
 }
-flipCard(0);
-flipCard(1);
